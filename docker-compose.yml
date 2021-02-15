@@ -20,6 +20,8 @@ services:
 #      - "./docker/nginx/default.conf:/etc/nginx/default.conf"
     networks:
       - proxy-net
+    labels:
+      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
 
   nginx-gen:
     image: jwilder/docker-gen
@@ -43,5 +45,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/acme.sh
+    depends_on:
+      - reverse-proxy
     environment:
-      - "DEFAULT_EMAIL=info@roscable.net"
+      DEFAULT_EMAIL: info@roscable.net
+      NGINX_DOCKER_GEN_CONTAINER: nginx-gen
+      NGINX_PROXY_CONTAINER: reverse-proxy
