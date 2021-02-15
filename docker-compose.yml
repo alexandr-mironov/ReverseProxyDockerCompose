@@ -16,6 +16,7 @@ services:
       - /etc/nginx/vhost.d
       - /etc/nginx/certs
       - /etc/nginx/dhparam
+      - /usr/share/nginx/html
 #      - "./docker/nginx/default.conf:/etc/nginx/default.conf"
     networks:
       - proxy-net
@@ -42,7 +43,6 @@ services:
     volumes_from:
       - reverse-proxy
     volumes:
-      - /etc/nginx/certs
       - /etc/acme.sh
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     depends_on:
