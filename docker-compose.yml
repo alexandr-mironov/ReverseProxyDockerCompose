@@ -16,6 +16,7 @@ services:
       - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - certs:/etc/nginx/certs:ro
+      - /etc/nginx/dhparam
 #      - "./docker/nginx/default.conf:/etc/nginx/default.conf"
     networks:
       - proxy-net
