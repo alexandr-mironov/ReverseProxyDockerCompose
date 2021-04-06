@@ -8,6 +8,7 @@ services:
   reverse-proxy:
     image: nginx:alpine
     container_name: reverse-proxy
+    restart: always
     ports:
       - "80:80"
       - "443:443"
