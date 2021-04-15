@@ -26,6 +26,7 @@ services:
   nginx-gen:
     image: jwilder/docker-gen
     container_name: nginx-gen
+    restart: always
     volumes_from:
       - reverse-proxy
     volumes:
@@ -40,6 +41,7 @@ services:
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: nginx-proxy-letsencrypt
+    restart: always
     volumes_from:
       - reverse-proxy
     volumes:
